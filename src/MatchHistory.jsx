@@ -13,14 +13,6 @@ class MatchHistory extends Component {
     })
   }
 
-  // componentDidMount() {
-  //   console.log("this is in comp did mount", this.props.match.matches);
-  //   axios.post('/matchdetails', {matches: this.props.match.matches})
-  //     .then(res => {
-  //       this.setState({matchDetails: res.data.matchDetails})
-  //     });
-  // }
-
   render() {
     return (
       <div>

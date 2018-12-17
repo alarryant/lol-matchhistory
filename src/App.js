@@ -16,11 +16,6 @@ class App extends Component {
     this.setState({summoner: summoner, matches: matches});
   }
 
-  // componentDidMount() {
-  //   fetch('/api/summonername')
-  //     .then(res => console.log(res));
-  // }
-
   render() {
     return (
       <div>
