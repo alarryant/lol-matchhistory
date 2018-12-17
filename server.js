@@ -11,8 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// var summonerName = '';
-
 app.post('/summonername', (req, res) => {
   const summonerName = req.body.summonerName;
   leagueJs.Summoner
@@ -21,28 +19,47 @@ app.post('/summonername', (req, res) => {
         'use strict';
         leagueJs.Match
           .gettingListByAccount(summoner.accountId, 'na1')
-          .then(match => {
+          .then(matches => {
             'use strict';
-            res.send({summoner: summoner, match: match});
-            // console.log(data);
+            let matchDetailArray = [];
+            let matchArray = matches.matches;
+            let participantStats = [];
+            matchArray.forEach(function(match) {
+              leagueJs.Match
+                .gettingById(match.gameId, 'na1')
+                .then(matchDetails => {
+                    matchDetails.participants.forEach((participant) => {
+                      let participantId = null;
+                      matchDetails.participantIdentities.forEach((participant) => {
+                        if (participant.player.accountId === summoner.accountId) {
+                          participantId = participant.participantId;
+                        }
+                      });
+                      if (participant.participantId === participantId) {
+                        participantStats.push({gameDuration: matchDetails.gameDuration,
+                                              summSpellOne: participant.spell1Id,
+                                              summSpellTwo: participant.spell2Id,
+                                              stats: participant.stats});
+                      }
+                    });
+                    res.send({summoner: summoner, matches: participantStats});
+                  })
+                .catch(err => {
+                  'use strict';
+                  console.log(err);
+                });
+              });
           })
           .catch(err => {
             'use strict';
             console.log(err);
           });
-        // console.log(data);
-        // res.send(data);
     })
     .catch(err => {
         'use strict';
         console.log(err);
     });
-  // console.log("this is summ name", summonerName);
 });
-
-// app.get(`https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summonerName}`, (req, res) => {
-
-// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
