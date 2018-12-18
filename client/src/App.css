@@ -40,6 +40,22 @@
   background-color: #ff00003b;
 }
 
+.matchBoxWin img {
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  margin: 0px 2px;
+  border: 1px solid black;
+}
+
+.matchBoxLose img {
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  margin: 0px 2px;
+  border: 1px solid black;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
