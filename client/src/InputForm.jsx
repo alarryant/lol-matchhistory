@@ -16,8 +16,10 @@ class InputForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.isLoading(true);
     axios.post('/api/summonername', {summonerName: this.state.summonerName})
       .then((res) => {
+        this.props.isLoading(false);
         this.props.getMatchHistory(res.data.summoner, res.data.matches);
       });
   };
@@ -26,10 +28,10 @@ class InputForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Summoner Name:
-          <input type="text" name="summonername" onChange={this.handleChange}/>
+          Summoner:
         </label>
-        <input type="submit" value="Submit" />
+        <input className="nameInput" type="text" name="summonername" onChange={this.handleChange} placeholder="Summoner Name"/>
+        <input className="submitInput" type="submit" value="Submit" />
       </form>
     )
   }

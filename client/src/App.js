@@ -9,17 +9,22 @@ class App extends Component {
     super(props);
     this.state = {matches: [], summoner: {}};
     this.getMatchHistory = this.getMatchHistory.bind(this);
+    this.isLoading = this.isLoading.bind(this);
   }
 
   getMatchHistory = (summoner, matches) => {
     this.setState({summoner: summoner, matches: matches});
   }
 
+  isLoading = (boolean) => {
+    this.setState({loading: boolean});
+  };
+
   render() {
     return (
       <div>
-        <InputForm getMatchHistory={this.getMatchHistory} />
-        <MatchHistory matches={this.state.matches} summoner={this.state.summoner} />
+        <InputForm getMatchHistory={this.getMatchHistory} isLoading={this.isLoading}/>
+        <MatchHistory matches={this.state.matches} summoner={this.state.summoner} loading={this.state.loading}/>
       </div>
     );
   }

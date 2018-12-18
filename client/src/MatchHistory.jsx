@@ -67,53 +67,111 @@ class MatchHistory extends Component {
       return (
           match.stats.win ? (
             <div className="matchBoxWin">
-              <h5>Game Duration:</h5> {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds
-              <h5>Champion Played:</h5> {this.findChampionName(match.champion)} <h5>Level:</h5>{match.stats.champLevel}
-              <h5>Summoner Spells:</h5>
-              <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
-              <img src={`/spell/${this.findSummonerSpellName(match.summSpellTwo)}`}/>
-              <h5>Items:</h5>
-              {match.stats.item0 ? <img src={`/item/${this.findItemName(match.stats.item0)}`}/> : ''}
-              {match.stats.item1 ? <img src={`/item/${this.findItemName(match.stats.item1)}`}/> : ''}
-              {match.stats.item2 ? <img src={`/item/${this.findItemName(match.stats.item2)}`}/> : ''}
-              {match.stats.item3 ? <img src={`/item/${this.findItemName(match.stats.item3)}`}/> : ''}
-              {match.stats.item4 ? <img src={`/item/${this.findItemName(match.stats.item4)}`}/> : ''}
-              {match.stats.item5 ? <img src={`/item/${this.findItemName(match.stats.item5)}`}/> : ''}
-              <h5>CS: {match.stats.totalMinionsKilled}</h5>
-              <h5>CS/min: {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</h5>
-              <h5>K/D/A:</h5> {match.stats.kills}/{match.stats.deaths}/{match.stats.assists}
-              <h5>Runes:</h5>
-              {match.stats.perk0 ? <img src={this.findRuneName(match.stats.perk0)}/> : ''}
-              {match.stats.perk1 ? <img src={this.findRuneName(match.stats.perk1)}/> : ''}
-              {match.stats.perk2 ? <img src={this.findRuneName(match.stats.perk2)}/> : ''}
-              {match.stats.perk3 ? <img src={this.findRuneName(match.stats.perk3)}/> : ''}
-              {match.stats.perk4 ? <img src={this.findRuneName(match.stats.perk4)}/> : ''}
-              {match.stats.perk5 ? <img src={this.findRuneName(match.stats.perk5)}/> : ''}
+              <div className="contentWrapper">
+                <span className="duration">
+                  <h5>Game Duration:</h5>
+                  {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds
+                </span>
+                <br/>
+                <span className="champion">
+                  <h5>Champion Played:</h5>
+                  {this.findChampionName(match.champion)}
+                  <h5>Level:</h5>
+                  {match.stats.champLevel}
+                </span>
+                <br/>
+                <span className="summSpells">
+                  <h5>Summoner Spells:</h5>
+                  <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
+                  <img src={`/spell/${this.findSummonerSpellName(match.summSpellTwo)}`}/>
+                </span>
+                <br/>
+                <span className="items">
+                  <h5>Items:</h5>
+                  {match.stats.item0 ? <img src={`/item/${this.findItemName(match.stats.item0)}`}/> : ''}
+                  {match.stats.item1 ? <img src={`/item/${this.findItemName(match.stats.item1)}`}/> : ''}
+                  {match.stats.item2 ? <img src={`/item/${this.findItemName(match.stats.item2)}`}/> : ''}
+                  {match.stats.item3 ? <img src={`/item/${this.findItemName(match.stats.item3)}`}/> : ''}
+                  {match.stats.item4 ? <img src={`/item/${this.findItemName(match.stats.item4)}`}/> : ''}
+                  {match.stats.item5 ? <img src={`/item/${this.findItemName(match.stats.item5)}`}/> : ''}
+                </span>
+                <br/>
+                <span className="creepScore">
+                  <h5>CS:</h5>
+                  {match.stats.totalMinionsKilled}
+                  <h5>CS/min:</h5>
+                  {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}
+                </span>
+                <br/>
+                <span className="kda">
+                  <h5>K/D/A:</h5>
+                  {match.stats.kills}/{match.stats.deaths}/{match.stats.assists}
+                </span>
+                <br/>
+                <span className="runes">
+                  <h5>Runes:</h5>
+                  {match.stats.perk0 ? <img src={this.findRuneName(match.stats.perk0)}/> : ''}
+                  {match.stats.perk1 ? <img src={this.findRuneName(match.stats.perk1)}/> : ''}
+                  {match.stats.perk2 ? <img src={this.findRuneName(match.stats.perk2)}/> : ''}
+                  {match.stats.perk3 ? <img src={this.findRuneName(match.stats.perk3)}/> : ''}
+                  {match.stats.perk4 ? <img src={this.findRuneName(match.stats.perk4)}/> : ''}
+                  {match.stats.perk5 ? <img src={this.findRuneName(match.stats.perk5)}/> : ''}
+                </span>
+              </div>
             </div>
             ) : (
             <div className="matchBoxLose">
-              <h5>Game Duration:</h5> {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds
-              <h5>Champion Played:</h5> {this.findChampionName(match.champion)} <h5>Level:</h5>{match.stats.champLevel}
-              <h5>Summoner Spells:</h5>
-              <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
-              <img src={`/spell/${this.findSummonerSpellName(match.summSpellTwo)}`}/>
-              <h5>Items:</h5>
-              {match.stats.item0 ? <img src={`/item/${this.findItemName(match.stats.item0)}`}/> : ''}
-              {match.stats.item1 ? <img src={`/item/${this.findItemName(match.stats.item1)}`}/> : ''}
-              {match.stats.item2 ? <img src={`/item/${this.findItemName(match.stats.item2)}`}/> : ''}
-              {match.stats.item3 ? <img src={`/item/${this.findItemName(match.stats.item3)}`}/> : ''}
-              {match.stats.item4 ? <img src={`/item/${this.findItemName(match.stats.item4)}`}/> : ''}
-              {match.stats.item5 ? <img src={`/item/${this.findItemName(match.stats.item5)}`}/> : ''}
-              <h5>CS: {match.stats.totalMinionsKilled}</h5>
-              <h5>CS/min: {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</h5>
-              <h5>K/D/A:</h5> {match.stats.kills}/{match.stats.deaths}/{match.stats.assists}
-              <h5>Runes:</h5>
-              {match.stats.perk0 ? <img src={this.findRuneName(match.stats.perk0)}/> : ''}
-              {match.stats.perk1 ? <img src={this.findRuneName(match.stats.perk1)}/> : ''}
-              {match.stats.perk2 ? <img src={this.findRuneName(match.stats.perk2)}/> : ''}
-              {match.stats.perk3 ? <img src={this.findRuneName(match.stats.perk3)}/> : ''}
-              {match.stats.perk4 ? <img src={this.findRuneName(match.stats.perk4)}/> : ''}
-              {match.stats.perk5 ? <img src={this.findRuneName(match.stats.perk5)}/> : ''}
+              <div className="contentWrapper">
+                <span className="duration">
+                  <h5>Game Duration:</h5>
+                  {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds
+                </span>
+                <br/>
+                <span className="champion">
+                  <h5>Champion Played:</h5>
+                  {this.findChampionName(match.champion)}
+                  <h5>Level:</h5>
+                  {match.stats.champLevel}
+                </span>
+                <br/>
+                <span className="summSpells">
+                  <h5>Summoner Spells:</h5>
+                  <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
+                  <img src={`/spell/${this.findSummonerSpellName(match.summSpellTwo)}`}/>
+                </span>
+                <br/>
+                <span className="items">
+                  <h5>Items:</h5>
+                  {match.stats.item0 ? <img src={`/item/${this.findItemName(match.stats.item0)}`}/> : ''}
+                  {match.stats.item1 ? <img src={`/item/${this.findItemName(match.stats.item1)}`}/> : ''}
+                  {match.stats.item2 ? <img src={`/item/${this.findItemName(match.stats.item2)}`}/> : ''}
+                  {match.stats.item3 ? <img src={`/item/${this.findItemName(match.stats.item3)}`}/> : ''}
+                  {match.stats.item4 ? <img src={`/item/${this.findItemName(match.stats.item4)}`}/> : ''}
+                  {match.stats.item5 ? <img src={`/item/${this.findItemName(match.stats.item5)}`}/> : ''}
+                </span>
+                <br/>
+                <span className="creepScore">
+                  <h5>CS:</h5>
+                  {match.stats.totalMinionsKilled}
+                  <h5>CS/min:</h5>
+                  {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}
+                </span>
+                <br/>
+                <span className="kda">
+                  <h5>K/D/A:</h5>
+                  {match.stats.kills}/{match.stats.deaths}/{match.stats.assists}
+                </span>
+                <br/>
+                <span className="runes">
+                  <h5>Runes:</h5>
+                  {match.stats.perk0 ? <img src={this.findRuneName(match.stats.perk0)}/> : ''}
+                  {match.stats.perk1 ? <img src={this.findRuneName(match.stats.perk1)}/> : ''}
+                  {match.stats.perk2 ? <img src={this.findRuneName(match.stats.perk2)}/> : ''}
+                  {match.stats.perk3 ? <img src={this.findRuneName(match.stats.perk3)}/> : ''}
+                  {match.stats.perk4 ? <img src={this.findRuneName(match.stats.perk4)}/> : ''}
+                  {match.stats.perk5 ? <img src={this.findRuneName(match.stats.perk5)}/> : ''}
+                </span>
+              </div>
             </div>
             )
       )
@@ -123,12 +181,15 @@ class MatchHistory extends Component {
   render() {
     return (
       <div>
-        {this.props.summoner.name ? (
-          <h1>Displaying Match History for {this.props.summoner.name}</h1>
-          ) : (
+        {this.props.loading ? (
           <h1>Loading...</h1>
-        )}
-        {this.displayMatch(this.props.matches)}
+          ) : (
+          <div>
+            {this.props.summoner.name ? <h1>Displaying Match History for</h1> : <h3>Please enter a summoner name.</h3>}
+            <h3>{this.props.summoner.name}</h3>
+          </div>
+          )}
+        {this.props.loading ? '' : this.displayMatch(this.props.matches)}
       </div>
     )
   }
