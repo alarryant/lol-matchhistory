@@ -9,15 +9,15 @@ const leagueJs = new LeagueJs(process.env.LEAGUE_API_KEY);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(express.static('public'));
-// define the folder that will be used for static assets
-app.use(Express.static(path.join(__dirname, './public')));
+app.use(express.static('public'));
+// // define the folder that will be used for static assets
+// app.use(Express.static(path.join(__dirname, './public')));
 
-// handle every other route with index.html, which will contain
-// a script tag to your application's JavaScript file(s).
-app.get('*', function (request, response){
-    response.sendFile(path.resolve(__dirname, './public', 'index.html'));
-});
+// // handle every other route with index.html, which will contain
+// // a script tag to your application's JavaScript file(s).
+// app.get('*', function (request, response){
+//     response.sendFile(path.resolve(__dirname, './public', 'index.html'));
+// });
 
 app.post('/summonername', (req, res) => {
   const summonerName = req.body.summonerName;
