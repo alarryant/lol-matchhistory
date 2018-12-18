@@ -29,7 +29,6 @@ app.post('/summonername', (req, res) => {
                 .gettingById(match.gameId, 'na1')
                 .then(matchDetails => {
                   'use strict';
-                  // console.log("match details", matchDetails);
                     matchDetails.participants.forEach((participant) => {
                       let participantId = null;
                       matchDetails.participantIdentities.forEach((participantIdentity) => {
