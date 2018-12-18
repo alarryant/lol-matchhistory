@@ -16,7 +16,7 @@ class InputForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/api/summonername', {summonerName: this.state.summonerName})
+    axios.post('/summonername', {summonerName: this.state.summonerName})
       .then((res) => {
         this.props.getMatchHistory(res.data.summoner, res.data.matches);
       });
