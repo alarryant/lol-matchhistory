@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
-const LeagueJs = require('LeagueJS');
+const LeagueJs = require('leaguejs');
 const leagueJs = new LeagueJs(process.env.LEAGUE_API_KEY);
 const path = require('path');
 
