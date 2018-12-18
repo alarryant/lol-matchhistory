@@ -7,12 +7,12 @@ import MatchHistory from './MatchHistory.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {matches: {}, summoner: {}};
+    this.state = {matches: [], summoner: {}};
     this.getMatchHistory = this.getMatchHistory.bind(this);
   }
 
   getMatchHistory = (summoner, matches) => {
-    console.log("this is in app", summoner, matches);
+    // console.log("this is in app", summoner, matches);
     this.setState({summoner: summoner, matches: matches});
   }
 

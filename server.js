@@ -22,27 +22,32 @@ app.post('/summonername', (req, res) => {
           .then(matches => {
             'use strict';
             let matchDetailArray = [];
-            let matchArray = matches.matches;
+            let matchArray = matches.matches.slice(0, 10);
             let participantStats = [];
-            matchArray.forEach(function(match) {
+            matchArray.forEach(function(match, index) {
               leagueJs.Match
                 .gettingById(match.gameId, 'na1')
                 .then(matchDetails => {
+                  'use strict';
+                  // console.log("match details", matchDetails);
                     matchDetails.participants.forEach((participant) => {
                       let participantId = null;
-                      matchDetails.participantIdentities.forEach((participant) => {
-                        if (participant.player.accountId === summoner.accountId) {
-                          participantId = participant.participantId;
+                      matchDetails.participantIdentities.forEach((participantIdentity) => {
+                        if (participantIdentity.player.accountId === summoner.accountId) {
+                          participantId = participantIdentity.participantId;
                         }
                       });
                       if (participant.participantId === participantId) {
                         participantStats.push({gameDuration: matchDetails.gameDuration,
+                                              champion: participant.championId,
                                               summSpellOne: participant.spell1Id,
                                               summSpellTwo: participant.spell2Id,
                                               stats: participant.stats});
                       }
                     });
-                    res.send({summoner: summoner, matches: participantStats});
+                    if (index === matchArray.length - 1) {
+                      res.send({summoner: summoner, matches: participantStats});
+                    }
                   })
                 .catch(err => {
                   'use strict';
