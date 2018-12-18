@@ -67,8 +67,8 @@ class MatchHistory extends Component {
       return (
           match.stats.win ? (
             <div className="matchBoxWin">
-              <h5>Game Duration: {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds</h5>
-              <h5>Champion Played: {this.findChampionName(match.champion)} Level:{match.stats.champLevel}</h5>
+              <h5>Game Duration:</h5> {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds
+              <h5>Champion Played:</h5> {this.findChampionName(match.champion)} <h5>Level:</h5>{match.stats.champLevel}
               <h5>Summoner Spells:</h5>
               <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
               <img src={`/spell/${this.findSummonerSpellName(match.summSpellTwo)}`}/>
@@ -81,7 +81,7 @@ class MatchHistory extends Component {
               {match.stats.item5 ? <img src={`/item/${this.findItemName(match.stats.item5)}`}/> : ''}
               <h5>CS: {match.stats.totalMinionsKilled}</h5>
               <h5>CS/min: {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</h5>
-              <h5>K/DA: {Math.floor(((match.stats.kills+match.stats.assists)/match.stats.deaths) * 100) / 100}</h5>
+              <h5>K/D/A:</h5> {match.stats.kills}/{match.stats.deaths}/{match.stats.assists}
               <h5>Runes:</h5>
               {match.stats.perk0 ? <img src={this.findRuneName(match.stats.perk0)}/> : ''}
               {match.stats.perk1 ? <img src={this.findRuneName(match.stats.perk1)}/> : ''}
@@ -92,8 +92,8 @@ class MatchHistory extends Component {
             </div>
             ) : (
             <div className="matchBoxLose">
-              <h5>Game Duration: {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds</h5>
-              <h5>Champion Played: {this.findChampionName(match.champion)} Level:{match.stats.champLevel}</h5>
+              <h5>Game Duration:</h5> {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds
+              <h5>Champion Played:</h5> {this.findChampionName(match.champion)} <h5>Level:</h5>{match.stats.champLevel}
               <h5>Summoner Spells:</h5>
               <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
               <img src={`/spell/${this.findSummonerSpellName(match.summSpellTwo)}`}/>
@@ -106,7 +106,7 @@ class MatchHistory extends Component {
               {match.stats.item5 ? <img src={`/item/${this.findItemName(match.stats.item5)}`}/> : ''}
               <h5>CS: {match.stats.totalMinionsKilled}</h5>
               <h5>CS/min: {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</h5>
-              <h5>K/DA: {Math.floor(((match.stats.kills+match.stats.assists)/match.stats.deaths) * 100) / 100}</h5>
+              <h5>K/D/A:</h5> {match.stats.kills}/{match.stats.deaths}/{match.stats.assists}
               <h5>Runes:</h5>
               {match.stats.perk0 ? <img src={this.findRuneName(match.stats.perk0)}/> : ''}
               {match.stats.perk1 ? <img src={this.findRuneName(match.stats.perk1)}/> : ''}
