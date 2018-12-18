@@ -64,8 +64,9 @@ class MatchHistory extends Component {
 
   displayMatch(matches=[]) {
     return matches.map(match => {
+      console.log(match);
       return (
-        <div className="matchBox">
+          match.stats.win ? (<div className="matchBoxWin">
           <h5>Game Duration: {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds</h5>
           <h5>Champion Played: {this.findChampionName(match.champion)} Level:{match.stats.champLevel}</h5>
           <h5>Summoner Spells: {this.findSummonerSpellName(match.summSpellOne)} & {this.findSummonerSpellName(match.summSpellTwo)}</h5>
@@ -74,13 +75,22 @@ class MatchHistory extends Component {
           <h5>CS/min: {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</h5>
           <h5>K/DA: {Math.floor(((match.stats.kills+match.stats.assists)/match.stats.deaths) * 100) / 100}</h5>
           <h5>Runes: {this.findRuneName(match.stats.perk0)}, {this.findRuneName(match.stats.perk1)}, {this.findRuneName(match.stats.perk2)}, {this.findRuneName(match.stats.perk3)}, {this.findRuneName(match.stats.perk4)}, {this.findRuneName(match.stats.perk5)}</h5>
-        </div>
+        </div>) :
+          (<div className="matchBoxLose">
+          <h5>Game Duration: {Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds</h5>
+          <h5>Champion Played: {this.findChampionName(match.champion)} Level:{match.stats.champLevel}</h5>
+          <h5>Summoner Spells: {this.findSummonerSpellName(match.summSpellOne)} & {this.findSummonerSpellName(match.summSpellTwo)}</h5>
+          <h5>Items bought: {this.findItemName(match.stats.item0)}, {this.findItemName(match.stats.item1)}, {this.findItemName(match.stats.item2)}, {this.findItemName(match.stats.item3)}, {this.findItemName(match.stats.item4)}, {this.findItemName(match.stats.item5)}</h5>
+          <h5>CS: {match.stats.totalMinionsKilled}</h5>
+          <h5>CS/min: {Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</h5>
+          <h5>K/DA: {Math.floor(((match.stats.kills+match.stats.assists)/match.stats.deaths) * 100) / 100}</h5>
+          <h5>Runes: {this.findRuneName(match.stats.perk0)}, {this.findRuneName(match.stats.perk1)}, {this.findRuneName(match.stats.perk2)}, {this.findRuneName(match.stats.perk3)}, {this.findRuneName(match.stats.perk4)}, {this.findRuneName(match.stats.perk5)}</h5>
+        </div>)
         )
     })
   }
 
   render() {
-    this.findItemName(1001);
     return (
       <div>
         {this.props.summoner.name ? (<h1>Displaying Match History for {this.props.summoner.name}</h1>) : <h1>Loading...</h1>}

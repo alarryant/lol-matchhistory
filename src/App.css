@@ -22,12 +22,22 @@
   color: #61dafb;
 }
 
-.matchBox {
+.matchBoxWin {
   width: 50%;
   font-size: 1em;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid black;
+  background-color: #0080004f;
+}
+
+.matchBoxLose {
+  width: 50%;
+  font-size: 1em;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: #ff00003b;
 }
 
 @keyframes App-logo-spin {
