@@ -18,8 +18,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <InputForm getMatchHistory={this.getMatchHistory}/>
-        <MatchHistory matches={this.state.matches} summoner={this.state.summoner}/>
+        <InputForm getMatchHistory={this.getMatchHistory} />
+        <MatchHistory matches={this.state.matches} summoner={this.state.summoner} />
       </div>
     );
   }
