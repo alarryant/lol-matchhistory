@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.post('/summonername', (req, res) => {
+app.post('/api/summonername', (req, res) => {
   const summonerName = req.body.summonerName;
   leagueJs.Summoner
     .gettingByName(summonerName)
