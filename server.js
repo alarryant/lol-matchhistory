@@ -6,20 +6,18 @@ const PORT = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const LeagueJs = require('LeagueJS');
 const leagueJs = new LeagueJs(process.env.LEAGUE_API_KEY);
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static('public'));
-// // define the folder that will be used for static assets
-// app.use(Express.static(path.join(__dirname, './public')));
+// app.use(express.static('public'));
 
-// // handle every other route with index.html, which will contain
-// // a script tag to your application's JavaScript file(s).
-// app.get('*', function (request, response){
-//     response.sendFile(path.resolve(__dirname, './public', 'index.html'));
-// });
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.post('/summonername', (req, res) => {
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+app.post('/api/summonername', (req, res) => {
   const summonerName = req.body.summonerName;
   leagueJs.Summoner
     .gettingByName(summonerName)
