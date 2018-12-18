@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   getMatchHistory = (summoner, matches) => {
-    // console.log("this is in app", summoner, matches);
     this.setState({summoner: summoner, matches: matches});
   }
 
