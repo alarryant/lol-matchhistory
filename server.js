@@ -19,12 +19,13 @@ app.get('*', (req, res) => {
 
 app.post('/api/summonername', (req, res) => {
   const summonerName = req.body.summonerName;
+  const region = req.body.region;
   leagueJs.Summoner
-    .gettingByName(summonerName)
+    .gettingByName(summonerName, region)
     .then(summoner => {
         'use strict';
         leagueJs.Match
-          .gettingListByAccount(summoner.accountId, 'na1')
+          .gettingListByAccount(summoner.accountId, region)
           .then(matches => {
             'use strict';
             let matchDetailArray = [];
@@ -32,7 +33,7 @@ app.post('/api/summonername', (req, res) => {
             let participantStats = [];
             matchArray.forEach(function(match, index) {
               leagueJs.Match
-                .gettingById(match.gameId, 'na1')
+                .gettingById(match.gameId, region)
                 .then(matchDetails => {
                   'use strict';
                     matchDetails.participants.forEach((participant) => {

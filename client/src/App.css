@@ -20,14 +20,20 @@ form {
   font-size: 1.5em;
   border: 1px solid black;
   padding: 20px;
+  height: 90px;
 }
 
 label {
   font-weight: 700;
 }
 
+select {
+  font-size: 0.8em;
+  font-family: 'Arimo', sans-serif;
+}
+
 .nameInput {
-  width: 65%;
+  width: 62%;
   padding: 5px 10px;
   margin: 0px 10px;
   font-size: 1em;
@@ -35,7 +41,9 @@ label {
 }
 
 input.submitInput {
+  float: right;
   font-size: 0.75em;
+  margin: 15px 20px;
   font-family: 'Arimo', sans-serif;
   width: 10%;
   padding: 5px;
