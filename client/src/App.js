@@ -23,6 +23,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1 className="title">
+          LoL Match History
+        </h1>
         <InputForm getMatchHistory={this.getMatchHistory} isLoading={this.isLoading}/>
         <MatchHistory matches={this.state.matches} summoner={this.state.summoner} loading={this.state.loading}/>
       </div>

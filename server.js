@@ -28,7 +28,7 @@ app.post('/api/summonername', (req, res) => {
           .then(matches => {
             'use strict';
             let matchDetailArray = [];
-            let matchArray = matches.matches.slice(0, 10);
+            let matchArray = matches.matches.slice(0, 20);
             let participantStats = [];
             matchArray.forEach(function(match, index) {
               leagueJs.Match
