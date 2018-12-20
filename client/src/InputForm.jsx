@@ -45,7 +45,6 @@ class InputForm extends Component {
           <option value="eun1">EUNE</option>
           <option value="kr">KR</option>
           <option value="jp1">JP</option>
-          <option value="kr">KR</option>
         </select>
         <input className="submitInput" type="submit" value="Submit" />
       </form>
