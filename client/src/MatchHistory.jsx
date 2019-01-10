@@ -91,7 +91,7 @@ class MatchHistory extends Component {
                   <h5>CS:</h5>
                   <p>{match.stats.totalMinionsKilled}</p>
                   <h5>CS/min:</h5>
-                  <p>{Math.floor((match.stats.totalMinionsKilled/match.gameDuration*60) * 100) / 100}</p>
+                  <p>{Math.floor((match.stats.totalMinionsKilled / match.gameDuration * 60) * 100) / 100}</p>
                   <br/>
                   <h5>Summoners:</h5>
                   <img src={`/spell/${this.findSummonerSpellName(match.summSpellOne)}`}/>
@@ -100,7 +100,7 @@ class MatchHistory extends Component {
                 <br/>
                 <span className="duration">
                   <h5>Game Duration:</h5>
-                  <p>{Math.floor(match.gameDuration/60)} minutes and {match.gameDuration % 60} seconds</p>
+                  <p>{Math.floor(match.gameDuration / 60)} minutes and {match.gameDuration % 60} seconds</p>
                 </span>
                 <br/>
                 <span className="items">

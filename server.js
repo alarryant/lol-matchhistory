@@ -1,3 +1,5 @@
+'use strict';
+
 require('dotenv').config();
 const env = process.env.ENV || 'development';
 const express = require('express');
@@ -23,51 +25,45 @@ app.post('/api/summonername', (req, res) => {
   leagueJs.Summoner
     .gettingByName(summonerName, region)
     .then(summoner => {
-        'use strict';
-        leagueJs.Match
-          .gettingListByAccount(summoner.accountId, region)
-          .then(matches => {
-            'use strict';
-            let matchDetailArray = [];
-            let matchArray = matches.matches.slice(0, 20);
-            let participantStats = [];
-            matchArray.forEach(function(match, index) {
-              leagueJs.Match
-                .gettingById(match.gameId, region)
-                .then(matchDetails => {
-                  'use strict';
-                    matchDetails.participants.forEach((participant) => {
-                      let participantId = null;
-                      matchDetails.participantIdentities.forEach((participantIdentity) => {
-                        if (participantIdentity.player.accountId === summoner.accountId) {
-                          participantId = participantIdentity.participantId;
-                        }
-                      });
-                      if (participant.participantId === participantId) {
-                        participantStats.push({gameDuration: matchDetails.gameDuration,
-                                              champion: participant.championId,
-                                              summSpellOne: participant.spell1Id,
-                                              summSpellTwo: participant.spell2Id,
-                                              stats: participant.stats});
+      leagueJs.Match
+        .gettingListByAccount(summoner.accountId, region)
+        .then(matches => {
+          let matchDetailArray = [];
+          let matchArray = matches.matches.slice(0, 20);
+          let participantStats = [];
+          matchArray.forEach(function(match, index) {
+            leagueJs.Match
+              .gettingById(match.gameId, region)
+              .then(matchDetails => {
+                  matchDetails.participants.forEach((participant) => {
+                    let participantId = null;
+                    matchDetails.participantIdentities.forEach((participantIdentity) => {
+                      if (participantIdentity.player.accountId === summoner.accountId) {
+                        participantId = participantIdentity.participantId;
                       }
                     });
-                    if (index === matchArray.length - 1) {
-                      res.send({summoner: summoner, matches: participantStats});
+                    if (participant.participantId === participantId) {
+                      participantStats.push({gameDuration: matchDetails.gameDuration,
+                                            champion: participant.championId,
+                                            summSpellOne: participant.spell1Id,
+                                            summSpellTwo: participant.spell2Id,
+                                            stats: participant.stats});
                     }
-                  })
-                .catch(err => {
-                  'use strict';
-                  console.log(err);
-                });
+                  });
+                  if (index === matchArray.length - 1) {
+                    res.send({summoner: summoner, matches: participantStats});
+                  }
+                })
+              .catch(err => {
+                console.log(err);
               });
+            });
           })
-          .catch(err => {
-            'use strict';
-            console.log(err);
-          });
+        .catch(err => {
+          console.log(err);
+        });
     })
     .catch(err => {
-        'use strict';
         console.log(err);
     });
 });
