@@ -11,11 +11,11 @@
 
 Homepage
 
-!["Home Page"](https://github.com/alarryant/exposure/blob/master/public/images/homepage.png)
+!["Home Page"](https://github.com/alarryant/lol-matchhistory/blob/master/client/public/LoL-Match-History-Index.png)
 
 Match History Results
 
-!["Match History Results"](https://github.com/alarryant/exposure/blob/master/public/images/dashboard.png)
+!["Match History Results"](https://github.com/alarryant/lol-matchhistory/blob/master/client/public/LoL-Match-History-Demo.gif)
 
 ## Dependencies
 - React
